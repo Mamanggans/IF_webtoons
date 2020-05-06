@@ -71,7 +71,8 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-                    <input type="Button" value="Register" class="login100-form-btn" onclick="show()"></input>
+						<div class="login100-form-btn">
+						<input type="button" class="login100-form-btn" name="register" id="register" value="Register" style="background-color: transparent;" onclick="show()"></div>
 					</div>
 					</div>
 
@@ -86,30 +87,6 @@
 						<span class="txt1">want to back to 
 						</span>
 						<a href="index.html">home</a> <!-- class="txt2" value="home" outcome="index"/> -->
-					</div>
-					<input id="name" name="name" class="form-control"
-						required minlength="4" appForbiddenName="bob"
-						[(ngModel)]="hero.name" #name="ngModel" >
-
-					<!-- <div ng-show="name.invalid && (name.dirty || name.touched)"
-						class="alert alert-danger">
-
-					<div *ngIf="name.errors.required">
-						Name is required.
-					</div>
-					<div *ngIf="name.errors.minlength">
-						Name must be at least 4 characters long.
-					</div>
-					<div *ngIf="name.errors.forbiddenName">
-						Name cannot be Bob.
-					</div>
-					</div> -->
-
-					<div class="col-md-6">
-						<div ng-show="formregister.email.$dirty && formregister.email.$invalid">
-						<small style="color:red;display:block; text-align:left;">*Please enter valid email</small>
-						</div>
-						<input type="email" name="email" id="email" ng-model="contact.email" required placeholder="Your e-mail">
 					</div>
 
 				</form>
@@ -127,14 +104,18 @@
 		{
 			var uname = document.getElementById("inputUsername").value; 
 			var email = document.getElementById("inputEmail").value;
-			changeColor(uname);
-			changeColor(email);
-			if(uname == null ) {
+			var pass = document.getElementById("inputPassword").value;
+			var passconfirm = document.getElementById("inputPassword2").value;
+			if(uname != "" && email != "" && pass != "" && passconfirm == pass) {
 				confirm("You have entered:" + "\n Name : " + uname + "\n Email : " + email + "\n\n Do you want to confirm these details ?");
-				if (window.confirm('congratulations you have succesfuly created an premium account , click ok to back to login page , click Cancel to change your data for registration ')) 
-				{
-				window.location.href="login.html";
+				if (window.confirm('congratulations you have succesfuly created an premium account , click ok to back to login page , click Cancel to change your data for registration ') == true) {
+					window.location.href="login.html";
 				}
+				else{
+					alert("Please enter valid data!")
+				}
+			}
+			else{
 				alert("Please enter valid data!")
 			}
 		}
